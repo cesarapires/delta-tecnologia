@@ -34,7 +34,7 @@
                         <td><?= $students['state'] ?></td>
                         <td>
                             <button typ='button' class="btn btn-outline-success btn-sm" data-toggle="modal"
-                                data-target="#showStudent" data-student="$students['student_id']">
+                                data-target="#showStudent" data-student='<?= $students['student_id'] ?>'>
                                 <i class="fas fa-eye">
                                 </i>
                             </button>

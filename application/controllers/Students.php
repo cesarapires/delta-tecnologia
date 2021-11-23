@@ -39,34 +39,25 @@ class Students extends CI_Controller {
     {
         $student = $_POST;
 
-        $cpf          = 1;
-        $curriculo    = $_FILES['photo'];
+        $name_file          = 1;
+        $photo = $_FILES['photo_student'];
         $configuracao = array(
-        'upload_path'   => './curriculos/',
-        'allowed_types' => 'jog',
-        'file_name'     => $cpf.'.jpg',
-        'max_size'      => '500'
+        'upload_path'   => './assets/students',
+        'allowed_types' => 'jpg',
+        'file_name'     => $name_file.'.jpg',
+        'max_size'      => '1000'
         );
         $this->load->library('upload');
         $this->upload->initialize($configuracao);
-        if ($this->upload->do_upload('curriculo'))
+        if ($this->upload->do_upload('photo'))
           echo 'Arquivo salvo com sucesso.';
          else
          echo $this->upload->display_errors();
 
-        $config['image_library'] = 'gd2';
-        $config['source_image'] = '/path/to/image/mypic.jpg';
-        $config['create_thumb'] = TRUE;
-        $config['maintain_ratio'] = TRUE;
-
-        $this->load->library('image_lib', $config);
-
-        $this->image_lib->resize();
-
-    
+        /*$student['photo_id'] = $name_file;
         $this->load->model('student_model');
-        $this->student_model->store($student);
-        redirect('students');
+        $this->student_model->store($student);*/
+        //redirect('students');
     }
 
     public function edit($student_id)
