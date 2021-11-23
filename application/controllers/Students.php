@@ -11,6 +11,8 @@ class Students extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
 		$this->load->view('pages/students', $data);
+        $this->load->view('pages/students/view_student');
+        $this->load->view('pages/API/show_student');
 		$this->load->view('templates/footer', $data);
 		$this->load->view('templates/js.php', $data);
 	}
@@ -20,16 +22,48 @@ class Students extends CI_Controller {
         $data['title'] = 'Alunos - CRUD Alunos';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
-		$this->load->view('pages/students/form-students', $data);
+		$this->load->view('pages/students/form_students', $data);
 		$this->load->view('templates/footer', $data);
         $this->load->view('pages/API/cep.php', $data);
 		$this->load->view('templates/js.php', $data); 
 
     }
 
+    public function show($student_id){
+        $this->load->model('student_model');
+        $data = $this->student_model->show($student_id);
+        echo json_encode($data);
+    }
+
     public function store()
     {
         $student = $_POST;
+
+        $cpf          = 1;
+        $curriculo    = $_FILES['photo'];
+        $configuracao = array(
+        'upload_path'   => './curriculos/',
+        'allowed_types' => 'jog',
+        'file_name'     => $cpf.'.jpg',
+        'max_size'      => '500'
+        );
+        $this->load->library('upload');
+        $this->upload->initialize($configuracao);
+        if ($this->upload->do_upload('curriculo'))
+          echo 'Arquivo salvo com sucesso.';
+         else
+         echo $this->upload->display_errors();
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = '/path/to/image/mypic.jpg';
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+
+        $this->load->library('image_lib', $config);
+
+        $this->image_lib->resize();
+
+    
         $this->load->model('student_model');
         $this->student_model->store($student);
         redirect('students');
@@ -43,7 +77,7 @@ class Students extends CI_Controller {
         
         $this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
-		$this->load->view('pages/students/form-students', $data);
+		$this->load->view('pages/students/form_students', $data);
 		$this->load->view('templates/footer', $data);
         $this->load->view('pages/API/cep.php', $data);
 		$this->load->view('templates/js.php', $data); 
