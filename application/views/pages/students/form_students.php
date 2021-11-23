@@ -25,7 +25,7 @@
                             </div>
                             <div class='row'>
                                 <div class='col-md-12'>
-                                    <img src="<?= base_url('assets/students/default.png') ?>"
+                                    <img src="<?= isset($student['photo_id']) ? base_url('public/students/'.$student['photo_id'].'.jpg') : base_url('public/students/default.png') ?>"
                                         class="rounded mx-auto d-block" alt="..." style="width:225px; height:225px">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Escolha o arquivo da foto</label>

@@ -39,25 +39,30 @@ class Students extends CI_Controller {
     {
         $student = $_POST;
 
-        $name_file          = 1;
-        $photo = $_FILES['photo_student'];
-        $configuracao = array(
-        'upload_path'   => './assets/students',
-        'allowed_types' => 'jpg',
-        'file_name'     => $name_file.'.jpg',
-        'max_size'      => '1000'
-        );
-        $this->load->library('upload');
-        $this->upload->initialize($configuracao);
-        if ($this->upload->do_upload('photo'))
-          echo 'Arquivo salvo com sucesso.';
-         else
-         echo $this->upload->display_errors();
+        $name_file = bin2hex(random_bytes(16));
+        // $photo = $_FILES['photo_student'];
+    
+        $config['file_name']            = $name_file.'.jpg';
+        $config['upload_path']          = './assets/students/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 1000;
+       
+        $this->load->library('upload', $config);
 
-        /*$student['photo_id'] = $name_file;
-        $this->load->model('student_model');
-        $this->student_model->store($student);*/
-        //redirect('students');
+        if ( ! $this->upload->do_upload('photo_student'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('upload_form', $error);
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $student['photo_id'] = $name_file;
+            $this->load->model('student_model');
+            $this->student_model->store($student);
+            redirect('students');
+        }
     }
 
     public function edit($student_id)

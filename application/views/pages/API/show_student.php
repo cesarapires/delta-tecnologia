@@ -11,6 +11,13 @@ $('#showStudent').on('shown.bs.modal', function (event) {
     request.onload = function() {
         var student = request.response;
         $('#name').val(student.name);
+        if(student.photo_id != null){
+            var url_photo = "<?= base_url() ?>public/students/"+student.photo_id+".jpg" 
+        }
+        else{
+            var url_photo = "<?= base_url() ?>public/students/default.png"
+        }
+        $('#photo').attr('src', url_photo);
         $('#cep').val(student.cep);
         $('#address').val(student.address);
         $('#number').val(student.number);

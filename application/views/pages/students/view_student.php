@@ -24,8 +24,8 @@
                                 </div>
                                 <div class='row'>
                                     <div class='col-md-12'>
-                                        <img src="<?= base_url('assets/students/default.png') ?>" class="rounded mx-auto d-block"
-                                            alt="..." style="width:225px; height:225px">
+                                        <img src="<?= base_url('public/students/default.png') ?>" class="rounded mx-auto d-block"
+                                            alt="..." style="width:225px; height:225px" id='photo'>
                                     </div>
                                 </div>
                             </div>
