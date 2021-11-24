@@ -1,3 +1,4 @@
+
 <script>
 $('#showStudent').on('shown.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
@@ -25,6 +26,6 @@ $('#showStudent').on('shown.bs.modal', function (event) {
         $('#complement').val(student.complement);
         $('#city').val(student.city);
         $('#state').val(student.state);
+        $('#deleteButton').attr('href', "<?= base_url()?>students/delete/"+student_id);
     }
 });
-</script>

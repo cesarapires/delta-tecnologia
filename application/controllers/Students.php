@@ -11,8 +11,9 @@ class Students extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
 		$this->load->view('pages/students', $data);
-        $this->load->view('pages/students/view_student');
-        $this->load->view('pages/API/show_student');
+        $this->load->view('pages/students/modal_student');
+        $this->load->view('pages/js_modal/show_student');
+        $this->load->view('pages/js_modal/delete_student');
 		$this->load->view('templates/footer', $data);
 		$this->load->view('templates/js.php', $data);
 	}
@@ -45,8 +46,8 @@ class Students extends CI_Controller {
         
             $config['file_name']            = $name_file.'.jpg';
             $config['upload_path']          = './public/students/';
-            $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 1000;
+            $config['allowed_types']        = 'jpg';
+            $config['max_size']             = 8000;
         
             $this->load->library('upload', $config);
 
@@ -84,28 +85,30 @@ class Students extends CI_Controller {
     public function update($student_id){
         $this->load->model('student_model');
         $student = $_POST;
-
+    
         if(! empty($_FILES['photo_student']['name'])){
-           
+               
             $data['student'] = $this->student_model->show($student_id);
             $last_photo = $data['student']['photo_id'];
             if(! empty($last_photo)){
                 $url = 'public/students/'.$last_photo.'.jpg';
                 $this->load->helper("file");
-                if(! unlink($url)){
-                    echo 'errors occured';
-                    exit();
+                if(file_exists($url)){
+                    if(! unlink($url)){
+                        echo 'errors occured';
+                        exit();
+                    }
                 }
             }
-            
+                
             $name_file = bin2hex(random_bytes(16));
             $config['file_name']            = $name_file.'.jpg';
             $config['upload_path']          = './public/students/';
-            $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 1000;
-    
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+            $config['max_size']             = 6000;
+        
             $this->load->library('upload', $config);
-    
+        
             if ( ! $this->upload->do_upload('photo_student'))
             {
                 $error = array('error' => $this->upload->display_errors());
@@ -117,11 +120,10 @@ class Students extends CI_Controller {
                 $student['photo_id'] = $name_file;
             }
         }
-        
+            
         $this->student_model->update($student_id,$student);
         redirect('students');
-    }        
-
+    }   
 
     public function delete($student_id){
         $this->load->model('student_model');
@@ -130,9 +132,11 @@ class Students extends CI_Controller {
         if(! empty($last_photo)){
             $url = 'public/students/'.$last_photo.'.jpg';
             $this->load->helper("file");
-            if(! unlink($url)){
-                echo 'errors occured';
-                exit();
+            if(file_exists($url)){
+                if(! unlink($url)){
+                    echo 'errors occured';
+                    exit();
+                }
             }
         }
         $this->student_model->destroy($student_id);

@@ -24,8 +24,9 @@
                                 </div>
                                 <div class='row'>
                                     <div class='col-md-12'>
-                                        <img src="<?= base_url('public/students/default.png') ?>" class="rounded mx-auto d-block"
-                                            alt="..." style="width:225px; height:225px" id='photo'>
+                                        <img src="<?= base_url('public/students/default.png') ?>"
+                                            class="rounded mx-auto d-block" alt="..." style="width:225px; height:225px"
+                                            id='photo'>
                                     </div>
                                 </div>
                             </div>
@@ -91,8 +92,37 @@
                         </div>
                     </div>
                 </div>
+                <div>
+
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteStudent" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="deleteStudentLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteStudentLabel">Deletar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja excluir esse aluno?
+                </div>
+                <div>
+
+                </div>
+                <div class="modal-footer">
+                    <a type="button" id="deleteButton" class="btn btn-danger">Sim</a>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Não</button>
+
                 </div>
             </div>
         </div>

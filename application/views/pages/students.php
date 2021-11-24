@@ -33,6 +33,7 @@
                         <td><?= $students['city'] ?></td>
                         <td><?= $students['state'] ?></td>
                         <td>
+                  
                             <button typ='button' class="btn btn-outline-success btn-sm" data-toggle="modal"
                                 data-target="#showStudent" data-student='<?= $students['student_id'] ?>'>
                                 <i class="fas fa-eye">
@@ -42,10 +43,11 @@
                                 href="<?= base_url() ?>students/edit/<?= $students['student_id'] ?>">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a class="btnEdit btn btn-outline-danger btn-sm"
-                                href="<?= base_url() ?>students/delete/<?= $students['student_id'] ?>">
-                                <i class="fas fa-trash"></i>
-                            </a>
+                            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                                data-target="#deleteStudent"  data-student='<?= $students['student_id'] ?>'>
+                                <i class="fas fa-trash">
+                                </i>
+                            </button>
                         </td>
                     </tr>
                     <?php endforeach;?>

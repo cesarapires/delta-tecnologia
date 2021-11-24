@@ -1,3 +1,4 @@
+
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -6,7 +7,8 @@
 
     <div class="col-md-12">
         <?php if(isset($student)) : ?>
-        <form action="<?= base_url() ?>students/update/<?= $student['student_id'] ?>" method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url() ?>students/update/<?= $student['student_id'] ?>" method="POST"
+            enctype="multipart/form-data">
             <?php else : ?>
             <form action="<?= base_url() ?>students/store" method="POST" enctype="multipart/form-data">
                 <?php endif; ?>
@@ -19,7 +21,8 @@
                                     <div class="form-group">
                                         <label for="name">Nome:</label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Nome"
-                                            value="<?= isset($student) ? $student['name'] : "" ?>" maxlength="50" required>
+                                            value="<?= isset($student) ? $student['name'] : "" ?>" maxlength="50"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +32,8 @@
                                         class="rounded mx-auto d-block" alt="..." style="width:225px; height:225px">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Escolha o arquivo da foto</label>
-                                        <input type="file" class="form-control-file" id="photo_student" name="photo_student" accept=".jpg">
+                                        <input type="file" class="form-control-file" id="photo_student"
+                                            name="photo_student" accept=".jpg" onchange="validate_fileupload(this);">
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +54,8 @@
                                         <label for="address">Endereço:</label>
                                         <input type="text" class="form-control" name="address" id="address"
                                             placeholder="Endereço"
-                                            value="<?= isset($student) ? $student['address'] : "" ?>" maxlength="60" required></input>
+                                            value="<?= isset($student) ? $student['address'] : "" ?>" maxlength="60"
+                                            required></input>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -68,7 +73,8 @@
                                         <label for="district">Bairro:</label>
                                         <input type="text" class="form-control" name="district" id="district"
                                             placeholder="Bairro"
-                                            value="<?= isset($student) ? $student['district'] : "" ?>" maxlength="20"></input>
+                                            value="<?= isset($student) ? $student['district'] : "" ?>"
+                                            maxlength="20"></input>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -85,16 +91,16 @@
                                     <div class="form-group">
                                         <label for="city">Cidade:</label>
                                         <input type="text" class="form-control" name="city" id="city"
-                                            placeholder="Cidade"
-                                            value="<?= isset($student) ? $student['city'] : "" ?>" maxlength="60"></input>
+                                            placeholder="Cidade" value="<?= isset($student) ? $student['city'] : "" ?>"
+                                            maxlength="60"></input>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="state">Estado:</label>
                                         <input type="text" class="form-control" name="state" id="state"
-                                            placeholder="Estado"
-                                            value="<?= isset($student) ? $student['state'] : "" ?>" maxlength="2">
+                                            placeholder="Estado" value="<?= isset($student) ? $student['state'] : "" ?>"
+                                            maxlength="2">
                                     </div>
                                 </div>
                             </div>
@@ -113,3 +119,24 @@
 </main>
 </div>
 </div>
+
+<script>
+var valid = false;
+
+function validate_fileupload(file) {
+    var el = document.getElementById("photo_student");
+    var fileName = file.value;
+    var filesize = file.files[0].size;
+    var allowed_extensions = "jpg";
+    var extension = fileName.split('.').pop();
+
+        if (allowed_extensions != extension) {
+            alert("Formado de arquivo invalido");
+            document.getElementById("photo_student").value = "";
+        }
+        if(filesize > 800000){
+            alert('Tamanho do arquivo maior que o permitido');
+            document.getElementById("photo_student").value = "";
+        }
+}
+</script>
