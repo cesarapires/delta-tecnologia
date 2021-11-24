@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('student_model');
-		$data['students'] = $this->student_model->index();
+		$data['students'] = $this->student_model->count();
 		$data['title'] = 'Dashboard - CRUD Alunos';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);

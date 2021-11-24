@@ -19,7 +19,7 @@
                                     <div class="form-group">
                                         <label for="name">Nome:</label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Nome"
-                                            value="<?= isset($student) ? $student['name'] : "" ?>" required>
+                                            value="<?= isset($student) ? $student['name'] : "" ?>" maxlength="50" required>
                                     </div>
                                 </div>
                             </div>
@@ -29,7 +29,7 @@
                                         class="rounded mx-auto d-block" alt="..." style="width:225px; height:225px">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Escolha o arquivo da foto</label>
-                                        <input type="file" class="form-control-file" id="photo_student" name="photo_student">
+                                        <input type="file" class="form-control-file" id="photo_student" name="photo_student" accept=".jpg">
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                     <div class="form-group">
                                         <label for="cep">CEP:</label>
                                         <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP"
-                                            value="<?= isset($student) ? $student['cep'] : "" ?>"></input>
+                                            value="<?= isset($student) ? $student['cep'] : "" ?>" maxlength="8"></input>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                         <label for="address">Endereço:</label>
                                         <input type="text" class="form-control" name="address" id="address"
                                             placeholder="Endereço"
-                                            value="<?= isset($student) ? $student['address'] : "" ?>" required></input>
+                                            value="<?= isset($student) ? $student['address'] : "" ?>" maxlength="60" required></input>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -58,7 +58,7 @@
                                         <label for="number">Número:</label>
                                         <input type="text" class="form-control" name="number" id="number"
                                             placeholder="Número"
-                                            value="<?= isset($student) ? $student['number'] : "" ?>">
+                                            value="<?= isset($student) ? $student['number'] : "" ?>" maxlength="5">
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                         <label for="district">Bairro:</label>
                                         <input type="text" class="form-control" name="district" id="district"
                                             placeholder="Bairro"
-                                            value="<?= isset($student) ? $student['district'] : "" ?>"></input>
+                                            value="<?= isset($student) ? $student['district'] : "" ?>" maxlength="20"></input>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -76,7 +76,7 @@
                                         <label for="complement">Complemento:</label>
                                         <input type="text" class="form-control" name="complement" id="complement"
                                             value="<?= isset($student) ? $student['complement'] : "" ?>"
-                                            placeholder="Complemento">
+                                            placeholder="Complemento" maxlength="30">
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                         <label for="city">Cidade:</label>
                                         <input type="text" class="form-control" name="city" id="city"
                                             placeholder="Cidade"
-                                            value="<?= isset($student) ? $student['city'] : "" ?>"></input>
+                                            value="<?= isset($student) ? $student['city'] : "" ?>" maxlength="60"></input>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -94,7 +94,7 @@
                                         <label for="state">Estado:</label>
                                         <input type="text" class="form-control" name="state" id="state"
                                             placeholder="Estado"
-                                            value="<?= isset($student) ? $student['state'] : "" ?>">
+                                            value="<?= isset($student) ? $student['state'] : "" ?>" maxlength="2">
                                     </div>
                                 </div>
                             </div>

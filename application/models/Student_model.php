@@ -3,7 +3,6 @@
 
 class Student_model extends CI_Model
 {
-
     public function index(){
         return $this->db->get('students')->result_array();
     }
@@ -24,6 +23,10 @@ class Student_model extends CI_Model
     public function destroy($student_id){
         $this->db->where('student_id',$student_id);
         return $this->db->delete('students');
-        
     }
+    public function count(){
+        $query = $this->db->get('students');
+        return $query->num_rows();
+    }
+
 }

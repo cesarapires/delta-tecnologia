@@ -4,30 +4,10 @@
             <h1 class="h2">Dashboard</h1>
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>CEP</th>
-                        <th>Cidade</th>
-                        <th>Estado</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($students as $students) : ?>
-                    <tr>
-                        <td><?= $students['student_id'] ?></td>
-                        <td><?= $students['name'] ?></td>
-                        <td><?= $students['cep'] ?></td>
-                        <td><?= $students['city'] ?></td>
-                        <td><?= $students['state'] ?></td>
-                        <td>xxx</td>
-                    </tr>
-                    <?php endforeach;?>
-                </tbody>
-            </table>
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Alunos</h5>
+                <h3 class="card-text"><?= $students ?></h3>
+            </div>
         </div>
     </main>
