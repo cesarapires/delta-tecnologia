@@ -1,70 +1,45 @@
-###################
-What is CodeIgniter
-###################
+# Desafio - César Augusto Pires
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+<h1 align="center">
+    <a href="http://delta-global-teste-php.epizy.com/Dashboard">Acessar a demonstração</a>
+</h1>
 
-*******************
-Release Information
-*******************
+## Features
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+- [x] Cadastro de aluno
+- [x] Listagem
+- [x] Visulizar dados de apenas um aluno
+- [x] Editar dados do aluno
+- [x] Excluir aluno
+- [x] Enviar foto do perfil do aluno
+- [x] Editar foto do perfil do aluno
+- [x] Integração com a API ViaCEP
+- [x] Mostrar no dashboard o número de alunos cadastrados
 
-**************************
-Changelog and New Features
-**************************
+## Rodando o Projeto
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+- Rodar os seguintes comando, essa sequência terá como objetivo baixar o projeto e configurar o ambiente e o banco de dados, será necessário ter instalado o xampp e o git anteriormente.
 
-*******************
-Server Requirements
-*******************
+  ```bash
+  git clone git@github.com:cesarapires/desafio-php-codeigniter.git
+  ```
 
-PHP version 5.6 or newer is recommended.
+- Agora você deverá criar com a ajuda do phpMyAdmin o banco de dados. De preferência com o nome crud_aluno_db em seguida para criar as tabelas usadas no projeto, você deverá importar o arquivo .sql que está localizado na pasta application\database com isso o banco estará pronto para uso.
+  
+- Feito isso, agora você terá que configurar o arquivo data database.php que está localizado na pasta application\config preenchendo com as informações das configurações pessoais do seu servidor os sequintes campos:
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+  ```bash
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'crud_aluno_db',
+  ```
 
-************
-Installation
-************
+  Com isso, você deverá apenar certificar que no arquivo config.php, também localizado na mesma pasta do database.php está com a configuração abaixo, ou que esteja configurado para o diretorio principal do projeto.
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+  ```bash
+	$config['base_url'] = 'http://localhost/desafio-php-codeigniter/';
+  ```
+- Por fim, o desáfio estará rodando na URL: `http://localhost/desafio-php-codeigniter/`.
 
-*******
-License
-*******
-
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+---
